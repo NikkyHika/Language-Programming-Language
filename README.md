@@ -35,6 +35,8 @@ The Language language uses macros to simplify common tasks. Here are some of the
 
 `loop`: This is an alias for the while loop in C++, making it easier to read.
 
+`return_nothing`: This is an alias for the void function in C++.
+
 These macros are designed to make the code shorter and more readable.
 
 # 3. Functions in Language
