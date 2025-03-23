@@ -48,7 +48,8 @@ These functions are easy to use and designed to reduce the complexity of file op
 
 # Hello world
 
-```number main()
+```cpp
+number main()
 begin
   display "Hello world!";
 end
