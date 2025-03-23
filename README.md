@@ -1,7 +1,7 @@
 # Language
 Simple programming language
 # Download
-Windows(https://github.com/NikkyHika/Language/releases/tag/v1.0.1)
+Windows(https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.1)
 # Language Programming Language Tutorial
 In this tutorial, we will introduce the basics of the Language programming language, its syntax, and the available functions. The language is designed to be simple and concise, allowing for easy and readable code. It is built using C++ as the base language and utilizes macros to streamline common operations.
 
