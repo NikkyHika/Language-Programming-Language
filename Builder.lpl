@@ -1,0 +1,13 @@
+number main()
+begin
+    text filec;
+    text lpl;
+    text cpp;
+    display "ENTER PATH TO .LPL FILE\n";
+    display "=======================\n";
+    lpl = ask();
+    filec = file_get_contents(lpl);
+    cpp = "#include <iostream>\n#include <string>\n#include <fstream>\n#include <Windows.h>\n#include <vector>\n\nusing namespace std;\n\nstring file_get_contents(string file_path) {\n    ifstream content(file_path);\n    string contentLINE;\n    string contentRETURN;\n    while (getline(content, contentLINE)) {\n        contentRETURN += contentLINE + \"\\n\"; \n    }\n    content.close();\n    return contentRETURN;\n}\n\nvoid file_put_contents(string file_path, string file_contents) {\n    ofstream fileaddc(file_path);\n    fileaddc << file_contents;\n    fileaddc.close();\n}\n\nstring ask() {\n    string stirngask;\n    getline(cin, stirngask);\n    return stirngask;\n}\n\n#define display cout << \n#define number int\n#define text string\n#define symbol char\n#define point_number float\n#define return_nothing void\n#define list vector\n#define begin { \n#define end }\n#define loop while\n#define textToNum stoi\n"+filec;
+    file_put_contents("cppfile.cpp", cpp);
+    system("mingw32\\bin\\g++ cppfile.cpp -o output.exe -static");
+end
