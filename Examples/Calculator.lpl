@@ -1,0 +1,47 @@
+number main()
+begin
+	number num1;
+	text ope;
+	number num2;
+	number numR;
+	number i;
+	display "Calculator Example\n";
+	display "Num1, Operator, Num2\n";
+	loop (true)
+	begin
+		display "Num1: ";
+		num1 = textToNum(ask());
+		display "Operator: ";
+		ope = ask();
+		display "Num2: ";
+		num2 = textToNum(ask());
+		display num1;
+		display ope;
+		display num2;
+		display "=";
+		if (ope == "+")
+		begin
+			display num1+num2;
+		end
+		else if (ope == "-")
+		begin
+			display num1-num2;
+		end
+		else if (ope == "*")
+		begin
+			display num1*num2;
+		end
+		else if (ope == "/")
+		begin
+			if (num2 == 0)
+				display "error!";
+			else
+				display num1/num2;
+		end
+		else
+		begin
+			display "error!";
+		end
+		display "\n";
+	end
+end
