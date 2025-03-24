@@ -5,8 +5,8 @@ Windows(https://github.com/NikkyHika/Programming-Language-Language/releases/tag/
 
 # Cheat sheets
 Variable types
-`number` - int from C/C++.
-`text` - string from C++.
+`number` - int from C/C++.\n
+`text` - string from C++.\n
 `symbol` - char from C/C++.
 `list<vartype>` - list from C/C++.
 `point_number` - float from C/C++.
