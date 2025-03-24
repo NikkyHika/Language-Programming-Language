@@ -4,14 +4,14 @@ Simple programming language
 Windows(https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.2)
 
 # Cheat sheets
-Variable types
-`number` - int from C/C++.\n
-`text` - string from C++.\n
+##Variable types
+`number` - int from C/C++.
+`text` - string from C++.
 `symbol` - char from C/C++.
 `list<vartype>` - list from C/C++.
 `point_number` - float from C/C++.
 
-Functions
+##Functions
 `display text/number/symbol/point_number;` - displays text on the screen.
 `ask();` - get response from user, returns `text`.
 `fileGetContents(text filename);` - get content from file, returns `text`.
@@ -26,7 +26,7 @@ Functions
 `cmdCommand(text command);` - execute command line command.
 `textToNum(text);` - converts `text` to `number`.
 
-The rest that is not here
+##The rest that is not here
 `loop` - this creates a `while` loop.
 `begin` - opens a code block for a function/class/loop like `{`.
 `end` - closes a code block for a function/class/loop like `}`.
