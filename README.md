@@ -1,7 +1,7 @@
 # Language
 Simple programming language
 # Download
-Windows(https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.2)
+[Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.2)
 
 # Cheat sheets
 ## Variable types
