@@ -20,7 +20,7 @@ Simple programming language
 `getPath();` - gets the directory path it is currently in, returns `text`.<br>
 `listDir();` - gets a list of files and folders from the current directory, returns `list<text>`.<br>
 `deleteFile(text filename);` - deletes a file.<br>
-`deleteFolder(text foldername);` - deletes a folder (dir)(only if it's empty).<br>
+`deleteFolder(text foldername);` - deletes a directory(only if it's empty).<br>
 `createFolder(text foldername);` - creates a folder.<br>
 `changeDir(text foldername);` - move to another directory.<br>
 `cmdCommand(text command);` - execute command line command.<br>
