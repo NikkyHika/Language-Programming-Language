@@ -3,6 +3,7 @@ Simple programming language
 # Download
 [Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.2)
 
+# help();
 structure file  
 |-   text file.fileGetContents(text file_path)  
 |-   void file.filePutContents(text file_path, text file_contents)  
