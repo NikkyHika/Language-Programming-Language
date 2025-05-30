@@ -7,7 +7,7 @@ begin
 	number i;
 	display "Calculator Example\n";
 	display "Num1, Operator, Num2\n";
-	loop (true)
+	while (true)
 	begin
 		display "Num1: ";
 		num1 = textToNum(ask());
