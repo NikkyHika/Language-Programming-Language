@@ -1,0 +1,56 @@
+// usage in code:
+/*
+#include "Dictionary.lpl"
+*/
+
+template<typename LT>
+number GetInx(list<LT> l, LT e) begin
+    number i = 0;
+        while (l[i] != e) begin
+        i++;
+        if (i >= l.size())
+            return -1;
+    end
+    return i;
+end
+
+template<typename TKey, typename TValue>
+class dictionary begin
+    public:
+        list<TKey> Keys;
+        list<TValue> Values;
+
+        dictionary() begin end
+
+        dictionary(TKey k, TValue v) : TKey(k), TValue(v) begin end
+
+        void Add(TKey k, TValue v) begin
+            Keys.push_back(k);
+            Values.push_back(v);
+        end
+
+        void Set(TKey k, TValue v) begin
+            Values[GetInx(Keys, k)] = v;
+        end
+
+        TValue GetValue(TKey k) begin
+            return Values[GetInx(Keys, k)];
+        end
+
+        TKey GetKey(TValue v) begin
+            return Keys[GetInx(Values, v)];
+        end
+
+        number Size() begin
+            return Keys.size();
+        end
+
+        number GetIndexByValue(TValue v) begin
+            return GetInx(Values, v);
+        end
+
+        number GetIndexByKey(TKey k) begin
+            return GetInx(Keys, k);
+        end
+
+end;
