@@ -126,10 +126,7 @@ struct os_functions {
     }
 
     void cmdCommand(std::string command) {
-        if (command.substr(0, 2) == "cd")
-            _chdir(command.substr(3, command.length()).c_str());
-        else
-            system(command.c_str());
+        system(command.c_str());
     }
 };
 
@@ -165,24 +162,25 @@ int getcharcode() {
 }
 
 void help() {
+    std::cout << "The LPL is just a simplified C++." << std::endl;
     std::cout << "structure file" << std::endl;
-    std::cout << "|-   text file.fileGetContents(text file_path)" << std::endl;
-    std::cout << "|-   void file.filePutContents(text file_path, text file_contents)" << std::endl;
-    std::cout << "|-   void file.fileAddContents(text file_path, text append_contents)" << std::endl;
+    std::cout << "|-   text file.fileGetContents(text file_path) = reads text from a file." << std::endl;
+    std::cout << "|-   void file.filePutContents(text file_path, text file_contents) = writes text from a file." << std::endl;
+    std::cout << "|-   void file.fileAddContents(text file_path, text append_contents) = appends text to a file." << std::endl;
     std::cout << "structure convert" << std::endl;
-    std::cout << "|-   text convert.number_to_text(number num)" << std::endl;
-    std::cout << "|-   number convert.text_to_number(text text)" << std::endl;
-    std::cout << "|-   symbol convert.number_to_symbol(number num)" << std::endl;
-    std::cout << "|-   number convert.symbol_to_number(symbol sym)" << std::endl;
-    std::cout << "|-   text convert.symbol_to_text(symbol sym)" << std::endl;
+    std::cout << "|-   text convert.number_to_text(number num) = converts a number to text (123 -> \"123\")." << std::endl;
+    std::cout << "|-   number convert.text_to_number(text text) = converts a text to number (\"123\" -> 123)." << std::endl;
+    std::cout << "|-   symbol convert.number_to_symbol(number num) = converts a number to symbol by number code (97 -> 'a')." << std::endl;
+    std::cout << "|-   number convert.symbol_to_number(symbol sym) = converts a symbol to number by symbol code ('a' -> 97)." << std::endl;
+    std::cout << "|-   text convert.symbol_to_text(symbol sym) = converts a symbol to text ('a' -> \"a\")." << std::endl;
     std::cout << "structure os" << std::endl;
-    std::cout << "|-   text os.getPath()" << std::endl;
-    std::cout << "|-   list<text> os.listDir()" << std::endl;
-    std::cout << "|-   void os.deleteFile(text filename)" << std::endl;
-    std::cout << "|-   void os.deleteFolder(text foldername)" << std::endl;
-    std::cout << "|-   void os.createFolder(text foldername)" << std::endl;
-    std::cout << "|-   void os.changeDir(text foldername)" << std::endl;
-    std::cout << "|-   void os.cmdCommand(text command)" << std::endl;
+    std::cout << "|-   text os.getPath() = get current directory." << std::endl;
+    std::cout << "|-   list<text> os.listDir() = get list of directiores and files." << std::endl;
+    std::cout << "|-   void os.deleteFile(text filename) = deletes file." << std::endl;
+    std::cout << "|-   void os.deleteFolder(text foldername) = deletes directory." << std::endl;
+    std::cout << "|-   void os.createFolder(text foldername) = creates directory." << std::endl;
+    std::cout << "|-   void os.changeDir(text foldername) = creates directory." << std::endl;
+    std::cout << "|-   void os.cmdCommand(text command) = runs a command line command (IMPORTANT! The \"cd\" command does not work, use os.changeDir)." << std::endl;
     std::cout << "structure ConsoleColor" << std::endl;
     std::cout << "|-   number BLACK = 0" << std::endl;
     std::cout << "|-   number BLUE = 1" << std::endl;
@@ -200,13 +198,24 @@ void help() {
     std::cout << "|-   number LIGHTMAGENTA = 13" << std::endl;
     std::cout << "|-   number YELLOW = 14" << std::endl;
     std::cout << "|-   number WHITE = 15" << std::endl;
-    std::cout << "text ask()" << std::endl;
-    std::cout << "text explode(symbol separator, text text)" << std::endl;
-    std::cout << "text explode(symbol separator, text text)" << std::endl;
-    std::cout << "void setConsoleColor(number textColor, number backgroundColor = ConsoleColor.BLACK)" << std::endl;
-    std::cout << "number getcharcode()" << std::endl;
-    std::cout << "void help()" << std::endl;
+    std::cout << "text ask() = accepts text entered by the user." << std::endl;
+    std::cout << "list<text> explode(symbol separator, text text) = splits the text into list<text>." << std::endl;
+    std::cout << "void setConsoleColor(number textColor, number backgroundColor = ConsoleColor.BLACK) = changes the color of the console." << std::endl;
+    std::cout << "number getcharcode() = waits for a key to be pressed and returns its code, just like _getch() does." << std::endl;
+    std::cout << "void help() = prints a list of methods and keywords to the console." << std::endl;
     std::cout << std::endl << "-- 21 methods --" << std::endl << std::endl;
+    std::cout << "display ? = prints text to the console." << std::endl;
+    std::cout << "number = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295." << std::endl;
+    std::cout << "text = a variable type that stores text, the text must be in double quotes (\"Hello, world!\")." << std::endl;
+    std::cout << "symbol = a variable type that contains a single character is protected by apostrophes ('a')." << std::endl;
+    std::cout << "list<typename> = a list of objects (variables), you can learn more about them as vector in C++: " << " || https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 || (IMPORTANT: do not use list<typename>.find(), we recommend using a loop to find the element, like here, we will fix it)." << std::endl;
+    setConsoleColor(ConsoleColor.WHITE, ConsoleColor.BLUE);
+    std::cout << "template<typename LT>\nnumber GetInx(list<LT> l, LT e) begin\n    number i = 0;\n    while (l[i] != e) begin\n        i++;\n        if (i >= l.size())\n            return -1;\n    end\n    return i;\nend" << std::endl;
+    setConsoleColor(ConsoleColor.LIGHTGRAY);
+    std::cout << std::endl;
+    std::cout << "begin = opens a block of code." << std::endl;
+    std::cout << "end = closes a block of code." << std::endl;
+    std::cout << std::endl << "-- 7 keywords --" << std::endl << std::endl;
 }
 
 #define display std::cout << 
@@ -217,4 +226,3 @@ void help() {
 #define begin { 
 #define end }
 
-// and here number main() begin
