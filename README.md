@@ -52,7 +52,7 @@ display ? = prints text to the console.
 number = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295.  
 text = a variable type that stores text, the text must be in double quotes ("Hello, world!").  
 symbol = a variable type that contains a single character is protected by apostrophes ('a').  
-list<typename> = a list of objects (variables), you can learn more about them as vector in C++:  || https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 || (IMPORTANT: do not use list<typename>.find(), we recommend using a loop to find the element, like here, we will fix it).  
+list<typename> = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), we recommend using a loop to find the element, like here, we will fix it).  
 ```
 template<typename LT>
 number GetInx(list<LT> l, LT e) begin
