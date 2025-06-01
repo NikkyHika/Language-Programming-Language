@@ -40,19 +40,19 @@ structure ConsoleColor
 |-   `number LIGHTMAGENTA = 13`  
 |-   `number YELLOW = 14`  
 |-   `number WHITE = 15`  
-text ask() = accepts text entered by the user.  
-list<text> explode(symbol separator, text text) = splits the text into list<text>.  
-void setConsoleColor(number textColor, number backgroundColor = ConsoleColor.BLACK) = changes the color of the console.  
-number getcharcode() = waits for a key to be pressed and returns its code, just like _getch() does.  
-void help() = prints a list of methods and keywords to the console.  
+`text ask()` = accepts text entered by the user.  
+`list<text> explode(symbol separator, text text)` = splits the text into list<text>.  
+`void setConsoleColor(number textColor, number backgroundColor = ConsoleColor.BLACK)` = changes the color of the console.  
+`number getcharcode()` = waits for a key to be pressed and returns its code, just like _getch() does.  
+`void help()` = prints a list of methods and keywords to the console.  
   
 -- 21 methods --  
   
-display ? = prints text to the console.  
-number = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295.  
-text = a variable type that stores text, the text must be in double quotes ("Hello, world!").  
-symbol = a variable type that contains a single character is protected by apostrophes ('a').  
-list<typename> = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), we recommend using a loop to find the element, like here, we will fix it).  
+`display ?` = prints text to the console.  
+`number` = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295.  
+`text` = a variable type that stores text, the text must be in double quotes ("Hello, world!").  
+`symbol` = a variable type that contains a single character is protected by apostrophes ('a').  
+`list<typename>` = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), we recommend using a loop to find the element, like here, we will fix it).  
 ```
 template<typename LT>
 number GetInx(list<LT> l, LT e) begin
@@ -66,8 +66,8 @@ number GetInx(list<LT> l, LT e) begin
 end
 ```
   
-begin = opens a block of code.  
-end = closes a block of code.  
+`begin` = opens a block of code.  
+`end` = closes a block of code.  
   
 -- 7 keywords --  
 ```cpp
