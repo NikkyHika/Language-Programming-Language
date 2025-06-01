@@ -6,15 +6,15 @@ Simple programming language
 # help();
 The LPL is just a simplified C++.  
 structure file  
-|-   text file.fileGetContents(text file_path) = reads text from a file.  
-|-   void file.filePutContents(text file_path, text file_contents) = writes text from a file.  
-|-   void file.fileAddContents(text file_path, text append_contents) = appends text to a file.  
+|-   `text file.fileGetContents(text file_path)` = reads text from a file.  
+|-   `void file.filePutContents(text file_path, text file_contents)` = writes text from a file.  
+|-   `void file.fileAddContents(text file_path, text append_contents)` = appends text to a file.  
 structure convert  
-|-   text convert.number_to_text(number num) = converts a number to text (123 -> "123").  
-|-   number convert.text_to_number(text text) = converts a text to number ("123" -> 123).  
-|-   symbol convert.number_to_symbol(number num) = converts a number to symbol by number code (97 -> 'a').  
-|-   number convert.symbol_to_number(symbol sym) = converts a symbol to number by symbol code ('a' -> 97).  
-|-   text convert.symbol_to_text(symbol sym) = converts a symbol to text ('a' -> "a").  
+|-   `text convert.number_to_text(number num)` = converts a number to text (123 -> "123").  
+|-   `number convert.text_to_number(text text)` = converts a text to number ("123" -> 123).  
+|-   `symbol convert.number_to_symbol(number num)` = converts a number to symbol by number code (97 -> 'a').  
+|-   `number convert.symbol_to_number(symbol sym)` = converts a symbol to number by symbol code ('a' -> 97).  
+|-   `text convert.symbol_to_text(symbol sym)` = converts a symbol to text ('a' -> "a").  
 structure os  
 |-   text os.getPath() = get current directory.  
 |-   list<text> os.listDir() = get list of directiores and files.  
