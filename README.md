@@ -1,10 +1,12 @@
-<p align="center">
-	<td valign="middle">
-		<img src="Language_logo.png" height="100"></img><img height="50" src="text.png"></img>
- 	</td>
-  	<br />
-	Simple programming language
-</p>
+<table>
+	<tr align="center">
+		<td valign="middle">
+			<img src="Language_logo.png" height="100"></img><img height="50" src="text.png"></img>
+	 	</td>
+	  	<br />
+		Simple programming language
+	</tr>
+</table>
 
 # Download
 [Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.4)
