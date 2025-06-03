@@ -5,7 +5,7 @@
 	 	</td>
 	</tr>
 	<tr>
-		<td>
+		<td valign="middle">
 			Simple programming language
 		</td>
 	</tr>
