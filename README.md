@@ -1,5 +1,5 @@
 <p align="center">
-	<p valign="center">
+	<p valign="middle">
 	<img src="Language_logo.png" height="100"></img><img height="50" src="text.png"></img>
  	</p>
   	<br />
