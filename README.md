@@ -58,7 +58,7 @@ structure ConsoleColor
 `number` = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295.  
 `text` = a variable type that stores text, the text must be in double quotes ("Hello, world!").  
 `symbol` = a variable type that contains a single character is protected by apostrophes ('a').  
-`list<typename>` = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?  view=msvc-170 (IMPORTANT: do not use list<typename>.find(), list<typename>.begin() and list<typename>.end(), we recommend using a `number getElementIndex(list<typename> l, typename e)`, `list<typename>::iterator listBegin(list<typename>& l)` and `list<typename>::iterator listEnd(list<typename>& l)`).  
+`list<typename>` = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), list<typename>.begin() and list<typename>.end(), we recommend using a `number getElementIndex(list<typename> l, typename e)`, `list<typename>::iterator listBegin(list<typename>& l)` and `list<typename>::iterator listEnd(list<typename>& l)`).  
 `begin` = opens a block of code.  
 `end` = closes a block of code.  
   
