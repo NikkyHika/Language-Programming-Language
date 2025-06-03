@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Language_logo.png" height="200"></img><b>anguage</b>
+  <img src="Language_logo.png" height="200"></img><b>anguage</b><br />
   Simple programming language
 </p>
 
