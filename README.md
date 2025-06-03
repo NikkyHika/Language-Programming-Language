@@ -1,5 +1,6 @@
-
-![](Language_logo.png)
+<p align="center">
+  <img src="Language_logo.png" width="200">
+</p>
 
 # Language
 Simple programming language
