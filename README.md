@@ -1,8 +1,6 @@
-<h1 align="center">
-  <img src="Language_logo.png" height="200"></img><b>anguage</b>
-</h1>
 <p align="center">
-Simple programming language
+  <img src="Language_logo.png" height="200"></img><b>anguage</b>
+  Simple programming language
 </p>
 
 # Download
