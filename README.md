@@ -1,4 +1,4 @@
-<p align="center" valign="middle">
+<p align="center" valign="center">
   <img src="Language_logo.png" height="100"></img><img height="50" src="text.png"></img><br />
   Simple programming language
 </p>
