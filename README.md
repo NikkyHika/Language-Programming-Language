@@ -1,7 +1,7 @@
 # Language
 Simple programming language
 # Download
-[Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.3)
+[Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.4)
 
 # help();
 The LPL is just a simplified C++.  
