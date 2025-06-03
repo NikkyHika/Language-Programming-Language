@@ -1,9 +1,8 @@
 <p align="center">
-  <img src="Language_logo.png" width="200">
+  <img src="Language_logo.png" width="200"></img>
+  Simple programming language
 </p>
 
-# Language
-Simple programming language
 # Download
 [Windows](https://github.com/NikkyHika/Programming-Language-Language/releases/tag/v1.0.4)
 
