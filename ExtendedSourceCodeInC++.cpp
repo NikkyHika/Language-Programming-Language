@@ -6,7 +6,7 @@
 #include <vector>
 #include <direct.h>
 
-struct file_functions
+namespace file
 {
     std::string fileGetContents(std::string file_path) {
         std::ifstream content(file_path);
@@ -30,7 +30,7 @@ struct file_functions
     }
 };
 
-struct convert_functions
+namespace convert
 {
     std::string number_to_text(int num) {
         return std::to_string(num);
@@ -52,9 +52,6 @@ struct convert_functions
         return std::string({sym});
     }
 };
-
-file_functions file;
-convert_functions convert;
 
 std::string ask() {
     std::string stirngask;
@@ -83,7 +80,7 @@ std::vector<std::string> explode(char separator, std::string text) {
     }
     return result;
 }
-struct os_functions {
+namespace os {
     std::string getPath() {
         char buffer[MAX_PATH];
         DWORD len = GetCurrentDirectoryA(MAX_PATH, buffer);
@@ -110,16 +107,15 @@ struct os_functions {
     }
 
     void deleteFile(std::string filename) {
-        system(("del " + filename).c_str());
+        DeleteFileA(filename.c_str());
     }
 
     void deleteFolder(std::string foldername) {
-        system(("rmdir /s /q " + foldername).c_str());
+        RemoveDirectoryA(foldername.c_str());
     }
 
     void createFolder(std::string foldername) {
-        //CreateDirectoryA(foldername.c_str());
-        system(("mkdir " + foldername).c_str());
+        CreateDirectoryA(foldername.c_str(), NULL);
     }
 
     void changeDir(std::string foldername) {
@@ -129,9 +125,21 @@ struct os_functions {
     void cmdCommand(std::string command) {
         system(command.c_str());
     }
+
+    void sleep(int milliseconds) {
+        Sleep(milliseconds);
+    }
+
+    void shutdown() {
+        system("shutdown /s /t 0");
+    }
+
+    void reboot() {
+        system("shutdown /r /t 0");
+    }
 };
 
-struct ConsoleColor_lllist {
+namespace ConsoleColor {
     int BLACK = 0;
     int BLUE = 1;
     int GREEN = 2;
@@ -150,10 +158,7 @@ struct ConsoleColor_lllist {
     int WHITE = 15;
 };
 
-ConsoleColor_lllist ConsoleColor;
-os_functions os;
-
-void setConsoleColor(int textColor, int backgroundColor = ConsoleColor.BLACK) {
+void setConsoleColor(int textColor, int backgroundColor = ConsoleColor::BLACK) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, (backgroundColor << 4) | textColor);
 }
@@ -164,55 +169,58 @@ int getCharCode() {
 
 void help() {
     std::cout << "The LPL is just a simplified C++." << std::endl;
-    std::cout << "structure file" << std::endl;
-    std::cout << "|-   `text file.fileGetContents(text file_path)` = reads text from a file." << std::endl;
-    std::cout << "|-   `void file.filePutContents(text file_path, text file_contents)` = writes text from a file." << std::endl;
-    std::cout << "|-   `void file.fileAddContents(text file_path, text append_contents)` = appends text to a file." << std::endl;
-    std::cout << "structure convert" << std::endl;
-    std::cout << "|-   `text convert.number_to_text(number num)` = converts a number to text (123 -> \"123\")." << std::endl;
-    std::cout << "|-   `number convert.text_to_number(text text)` = converts a text to number (\"123\" -> 123)." << std::endl;
-    std::cout << "|-   `symbol convert.number_to_symbol(number num)` = converts a number to symbol by number code (97 -> 'a')." << std::endl;
-    std::cout << "|-   `number convert.symbol_to_number(symbol sym)` = converts a symbol to number by symbol code ('a' -> 97)." << std::endl;
-    std::cout << "|-   `text convert.symbol_to_text(symbol sym)` = converts a symbol to text ('a' -> \"a\")." << std::endl;
-    std::cout << "structure os" << std::endl;
-    std::cout << "|-   `text os.getPath()` = get current directory." << std::endl;
-    std::cout << "|-   `list<text> os.listDir()` = get list of directiores and files." << std::endl;
-    std::cout << "|-   `void os.deleteFile(text filename)` = deletes file." << std::endl;
-    std::cout << "|-   `void os.deleteFolder(text foldername)` = deletes directory." << std::endl;
-    std::cout << "|-   `void os.createFolder(text foldername)` = creates directory." << std::endl;
-    std::cout << "|-   `void os.changeDir(text foldername)` = creates directory." << std::endl;
-    std::cout << "|-   `void os.cmdCommand(text command)` = runs a command line command (IMPORTANT! The \"cd\" command does not work, use os.changeDir)." << std::endl;
-    std::cout << "structure ConsoleColor" << std::endl;
-    std::cout << "|-   `number BLACK = 0`" << std::endl;
-    std::cout << "|-   `number BLUE = 1`" << std::endl;
-    std::cout << "|-   `number GREEN = 2`" << std::endl;
-    std::cout << "|-   `number CYAN = 3`" << std::endl;
-    std::cout << "|-   `number RED = 4`" << std::endl;
-    std::cout << "|-   `number MAGENTA = 5`" << std::endl;
-    std::cout << "|-   `number BROWN = 6`" << std::endl;
-    std::cout << "|-   `number LIGHTGRAY = 7`" << std::endl;
-    std::cout << "|-   `number DARKGRAY = 8`" << std::endl;
-    std::cout << "|-   `number LIGHTBLUE = 9`" << std::endl;
-    std::cout << "|-   `number LIGHTGREEN = 10`" << std::endl;
-    std::cout << "|-   `number LIGHTCYAN = 11`" << std::endl;
-    std::cout << "|-   `number LIGHTRED = 12`" << std::endl;
-    std::cout << "|-   `number LIGHTMAGENTA = 13`" << std::endl;
-    std::cout << "|-   `number YELLOW = 14`" << std::endl;
-    std::cout << "|-   `number WHITE = 15`" << std::endl;
+    std::cout << "namespace file" << std::endl;
+    std::cout << "|-   `text file::fileGetContents(text file_path)` = reads text from a file." << std::endl;
+    std::cout << "|-   `void file::filePutContents(text file_path, text file_contents)` = writes text from a file." << std::endl;
+    std::cout << "|-   `void file::fileAddContents(text file_path, text append_contents)` = appends text to a file." << std::endl;
+    std::cout << "namespace convert" << std::endl;
+    std::cout << "|-   `text convert::number_to_text(number num)` = converts a number to text (123 -> \"123\")." << std::endl;
+    std::cout << "|-   `number convert::text_to_number(text text)` = converts a text to number (\"123\" -> 123)." << std::endl;
+    std::cout << "|-   `symbol convert::number_to_symbol(number num)` = converts a number to symbol by number code (97 -> 'a')." << std::endl;
+    std::cout << "|-   `number convert::symbol_to_number(symbol sym)` = converts a symbol to number by symbol code ('a' -> 97)." << std::endl;
+    std::cout << "|-   `text convert::symbol_to_text(symbol sym)` = converts a symbol to text ('a' -> \"a\")." << std::endl;
+    std::cout << "namespace os" << std::endl;
+    std::cout << "|-   `text os::getPath()` = get current directory." << std::endl;
+    std::cout << "|-   `list<text> os::listDir()` = get list of directiores and files." << std::endl;
+    std::cout << "|-   `void os::deleteFile(text filename)` = deletes file." << std::endl;
+    std::cout << "|-   `void os::deleteFolder(text foldername)` = deletes directory." << std::endl;
+    std::cout << "|-   `void os::createFolder(text foldername)` = creates directory." << std::endl;
+    std::cout << "|-   `void os::changeDir(text foldername)` = creates directory." << std::endl;
+    std::cout << "|-   `void os::cmdCommand(text command)` = runs a command line command (IMPORTANT! The \"cd\" command does not work, use os.changeDir)." << std::endl;
+    std::cout << "|-   `void os::sleep(number milliseconds)` = pauses the program for the specified number of milliseconds." << std::endl;
+    std::cout << "|-   `void os::shutdown()` = shutdowns the computer." << std::endl;
+    std::cout << "|-   `void os::reboot()` = reboots the computer." << std::endl;
+    std::cout << "namespace ConsoleColor" << std::endl;
+    std::cout << "|-   `ConsoleColor::BLACK` = 0" << std::endl;
+    std::cout << "|-   `ConsoleColor::BLUE` = 1" << std::endl;
+    std::cout << "|-   `ConsoleColor::GREEN` = 2" << std::endl;
+    std::cout << "|-   `ConsoleColor::CYAN` = 3" << std::endl;
+    std::cout << "|-   `ConsoleColor::RED` = 4" << std::endl;
+    std::cout << "|-   `ConsoleColor::MAGENTA` = 5" << std::endl;
+    std::cout << "|-   `ConsoleColor::BROWN` = 6" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTGRAY` = 7" << std::endl;
+    std::cout << "|-   `ConsoleColor::DARKGRAY` = 8" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTBLUE` = 9" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTGREEN` = 10" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTCYAN` = 11" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTRED` = 12" << std::endl;
+    std::cout << "|-   `ConsoleColor::LIGHTMAGENTA` = 13" << std::endl;
+    std::cout << "|-   `ConsoleColor::YELLOW` = 14" << std::endl;
+    std::cout << "|-   `ConsoleColor::WHITE` = 15" << std::endl;
     std::cout << "`text ask()` = accepts text entered by the user." << std::endl;
     std::cout << "`list<text> explode(symbol separator, text text)` = splits the text into list<text>." << std::endl;
-    std::cout << "`void setConsoleColor(number textColor, number backgroundColor = ConsoleColor.BLACK)` = changes the color of the console." << std::endl;
+    std::cout << "`void setConsoleColor(number textColor, number backgroundColor` = ConsoleColor.BLACK)` = changes the color of the console." << std::endl;
     std::cout << "`number getCharCode()` = waits for a key to be pressed and returns its code, just like _getch() does." << std::endl;
     std::cout << "`void help()` = prints a list of methods and keywords to the console." << std::endl;
     std::cout << "`number getElementIndex(list<typename> l, typename e)` = returns the index of an element in a list." << std::endl;
-    std::cout << "`list<typename>::iterator listBegin(list<typename>& l)` = returns a list iterator, like list<typename>.begin()." << std::endl;
-    std::cout << "`list<typename>::iterator listEnd(list<typename>& l)` = returns a list iterator, like list<typename>.end()." << std::endl;
+    std::cout << "`typename::iterator _Begin(typename& l)` = returns a list or text and etc. iterator, like typename.begin()." << std::endl;
+    std::cout << "`typename::iterator _End(typename& l)` = returns a list or text and etc. iterator, like typename.end()." << std::endl;
     std::cout << std::endl << "-- 21 methods --" << std::endl << std::endl;
     std::cout << "`display ?` = prints text to the console." << std::endl;
     std::cout << "`number` = a variable type that stores in 32-bit a number from -2147483644 to 2147483648 if you add unsigned in front of it, it will also be from 0 to 4294967295." << std::endl;
     std::cout << "`text` = a variable type that stores text, the text must be in double quotes (\"Hello, world!\")." << std::endl;
     std::cout << "`symbol` = a variable type that contains a single character is protected by apostrophes ('a')." << std::endl;
-    std::cout << "`list<typename>` = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), list<typename>.begin() and list<typename>.end(), we recommend using a `number getElementIndex(list<typename> l, typename e)`, `list<typename>::iterator listBegin(list<typename>& l)` and `list<typename>::iterator listEnd(list<typename>& l)`)." << std::endl;
+    std::cout << "`list<typename>` = a list of objects (variables), you can learn more about them as vector in C++: https://learn.microsoft.com/en-us/cpp/standard-library/vector-class?view=msvc-170 (IMPORTANT: do not use list<typename>.find(), list<typename>.begin() and list<typename>.end(), we recommend using a `number getElementIndex(list<typename> l, typename e)`, `typename::iterator _Begin(typename& l)` and `typename::iterator _End(typename& l)`)." << std::endl;
     std::cout << "`begin` = opens a block of code." << std::endl;
     std::cout << "`end` = closes a block of code." << std::endl;
     std::cout << std::endl << "-- 7 keywords --" << std::endl << std::endl;
@@ -220,9 +228,9 @@ void help() {
 
 template<typename LT>
 int getElementIndex(std::vector<LT> l, LT e) {
-    int i = 0; 
+    int i = 0;
     while (l[i] != e) {
-        i++; 
+        i++;
         if (i >= l.size())
             return -1;
     }
@@ -230,12 +238,12 @@ int getElementIndex(std::vector<LT> l, LT e) {
 }
 
 template<typename LT>
-auto listBegin(std::vector<LT>& l) {
+auto _Begin(LT& l) {
     return l.begin();
 }
 
 template<typename LT>
-auto listEnd(std::vector<LT>& l) {
+auto _End(LT& l) {
     return l.end();
 }
 
@@ -246,4 +254,3 @@ auto listEnd(std::vector<LT>& l) {
 #define list std::vector
 #define begin { 
 #define end }
-
